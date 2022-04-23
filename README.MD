@@ -34,7 +34,7 @@ git commit -m "commit note here"
 ```
 git log
 ```
-![commit info](1_log.png "Commit info")
+![commit info](img/1_log.png "Commit info")
 ## 3) Git environment
 Git has 3 environment to move files:
 - Working
@@ -70,7 +70,7 @@ Why ?
 - System files
 
 Create a `.gitignore` file at the root of the project. 
-<br>![git ignore file example](2_ignore.png "git ignore file example")
+<br>![git ignore file example](img/2_ignore.png "git ignore file example")
 
 Global ignore file:
 ```
@@ -85,12 +85,23 @@ git rm -r --cached .
 ## 5) Deleting and renaming files
 ### a) Deleting files
 - Deleting project files using system file management or IDE file management can be restore by using `git restore`.
-<br>![](3_del.png)
+<br>![](img/3_del.png)
 - Deleting project files using `git rm NAMEFILE` not only delete the file, but also move that deletion into staging and ready for commit (`git add`).
-<br>![](4_rm.png)
+<br>![](img/4_rm.png)
 - Using `git restore --staged FILENAME` to unstage.
-<br>![](5_rs.png)
-### b) Deleting files
+<br>![](img/5_rs.png)
+
+### b) Renaming files
+- You can rename project files using system file management or IDE file management. This will copy the file with new name and delete the old name file. You can undo this by using `git restore` and delete the new name file.
+<br>![](img/6_rn1.png)
+- Rename using git:
+```
+git mv oldFileName newFileName
+```
+- The file is also ready to be commited
+<br>![](img/7_mv.png)
+
+
 
 ## 6) 
 

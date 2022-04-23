@@ -82,4 +82,17 @@ You may add a file to .gitignore file after a lot of commits. Should clear local
 git rm -r --cached .
 ```
 
+## 5) Deleting and renaming files
+### a) Deleting files
+- Deleting project files using system file management or IDE file management can be restore by using `git restore`.
+<br>![](3_del.png)
+- Deleting project files using `git rm NAMEFILE` not only delete the file, but also move that deletion into staging and ready for commit (`git add`).
+<br>![](4_rm.png)
+- Using `git restore --staged FILENAME` to unstage.
+<br>![](5_rs.png)
+### b) Deleting files
+
+## 6) 
+
+
 # GITHUB

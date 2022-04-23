@@ -72,4 +72,14 @@ Why ?
 Create a `.gitignore` file at the root of the project. 
 <br>![git ignore file example](2_ignore.png "git ignore file example")
 
+Global ignore file:
+```
+git config --global core.excludesfile [ignored file go here]
+```
+
+You may add a file to .gitignore file after a lot of commits. Should clear local caches:
+```
+git rm -r --cached .
+```
+
 # GITHUB

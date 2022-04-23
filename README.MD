@@ -1,4 +1,4 @@
-GIT & GITHUN ESSENTIAL TRAINING
+**GIT & GITHUN ESSENTIAL TRAINING**
 
 # GIT
 ## 1) Git config
@@ -103,7 +103,16 @@ git mv oldFileName newFileName
 
 
 
-## 6) 
+## 6) Differences
+- To check the difference of all project files compare to the last commit, using: 
+```
+git diff
+```
+- VS code has *Source control* with the same usage.
+- Using `git log --oneline` for brief log information.
+<br>![](img/8_log1.png)
+- Using `git diff commitID1 commitID2` to show differences between two commit.
 
+## 7) Changing history
 
 # GITHUB

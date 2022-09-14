@@ -4,8 +4,8 @@
 ## 1) Git config
 In gitbash (or other terminal)
 ```
-git config --global user.name "name here"
-git config --global user.email "email here" 
+git config --global user.name "<name here>"
+git config --global user.email "<email here>" 
 ```
 - Tell git who you are so that it will give you credit for the changes you made.
 - Option `--global`  meaning that all the project on the computer use the same name and email.
@@ -20,18 +20,20 @@ git init
 - Staging area: a temporary area to store files that we want to commit later on.
 - To add files to staging area:
 ``` 
-git add FILENAME 
-// or add all files
+git add <FILENAME> 
+
+# or add all files
 git add --all
 git add -A
 git add .
 ```
 - Commit (make a checkpoint for the project)
 ```
-git commit -m "commit note here"
+git commit -m "<commit note here>"
 ```
-- To verify git keep track of what we had done:
+- Use `git log` to display all of the commits in a repository's history
 ```
+# often open log file in less editor
 git log
 ```
 ![commit info](img/1_log.png "Commit info")
@@ -58,9 +60,9 @@ git status
 Restore (to unstage):
 ```
 git restore FILENAME
-// restore whole folder
+# restore whole folder
 git restore .
-// or
+# or
 git checkout .
 ```
 ## 4) Ignore files
@@ -96,12 +98,10 @@ git rm -r --cached .
 <br>![](img/6_rn1.png)
 - Rename using git:
 ```
-git mv oldFileName newFileName
+git mv <oldFileName> <newFileName>
 ```
 - The file is also ready to be commited
 <br>![](img/7_mv.png)
-
-
 
 ## 6) Differences
 - To check the difference of all project files compare to the last commit, using: 
@@ -111,8 +111,107 @@ git diff
 - VS code has *Source control* with the same usage.
 - Using `git log --oneline` for brief log information.
 <br>![](img/8_log1.png)
-- Using `git diff commitID1 commitID2` to show differences between two commit.
+- Using `git diff` to show differences between two commit.
+```
+git diff <commitID1> <commitID2>
+```
 
 ## 7) Changing history
+### a) Amending
+- Add thing to the last commit (without creating a new commit).
+```
+git commit -amend
+
+# or with new message for the last commit
+git commit -am '<new commit message>'
+
+# or leave the message the same like the last commit
+git commit -amend --no-edit
+```
+- Use `git reset` to go back to previous commit (to the commit ID). But the files of the current commit remain unchanged (`git status` shows modified).
+```
+git reset <commitID>
+```
+- Add `--hard` option to `git reset` to go back to previous commit and remove all changes (NOTICE: unsafe).
+```
+git reset --hard <commitID>
+```
+
+### b) Rebasing ?
+- Rewrite history and reorganize the order of commits (with editor).
+```
+git rebase <branch>/<commit>
+# git rebase --interactive <branch>/<commit>
+
+# rebase by moing back to the last n commits.
+git rebase -i HEAD~<n commits>
+
+# all commits ?
+git rebase -i --root
+```
+
+## 8) Branches
+- Branches let you create different versions of your code (experiment new code, ...).
+- Show branches:
+```
+git branch
+# * main
+```
+- Make a new branch with the copy of an existing branch (new branch will have same history of original branch), or switch to a different existing branch
+```
+git switch -c <new branch name>
+
+# or
+git checkout -b <new branch name>
+```
+- Use `git merge`to synchronize a new branch to the main branch.
+```
+# you should switch back to main branch
+#  before merging
+git switch main
+
+# sync current branch to main branch
+git merge <current branch>
+```
+- Deleting a branch when it's no longer needed.
+```
+git branch --delete <branch name>
+
+# or 
+git branch -d <branch name>
+git branch -D <branch name>
+```
+- The sequence of doing things above called *git flow*:
+    1. Create a new branch (feature/fix branch)
+    2. Make changes
+    3. Merge to master/main
+    4. Delete old branch
+
+## 9) Merge conflict ?
+- Two branch edits the same file and merge to the main branch may cause merge conflict.
+<br>![](img/9_mergeConflict.png)
+- For example below, the main branch and the 'fixheadline' branch are not sync in the introduction's class. When merging fixheadline branch to the main branch, the merge coflict prompt (vs code).
+<br>![](img/9_mergeConflict2.png)
+
+-Removing
+
+## 10) Stash & Clean
+- `Git stash` stores the code changes temporarily to the stash and go back to last commit state.
+```
+# store all the changes temporarily in a stash
+git stash
+
+# check what's been stored
+git stash list
+
+# apply changes in stash number n
+git stash apply <n>
+
+# remove top of the stash and apply it
+# you may use git restore . to resote back to the last commit state
+git stash pop
+```
+
+
 
 # GITHUB

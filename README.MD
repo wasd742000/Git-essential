@@ -20,7 +20,7 @@ git init
 - Staging area: a temporary area to store files that we want to commit later on.
 - To add files to staging area:
 ``` 
-git add <FILENAME> 
+git add <FILENAME>
 
 # or add all files
 git add --all
@@ -196,6 +196,7 @@ git branch -D <branch name>
 -Removing
 
 ## 10) Stash & Clean
+### a) Git Stash
 - `Git stash` stores the code changes temporarily to the stash and go back to last commit state.
 ```
 # store all the changes temporarily in a stash
@@ -208,10 +209,66 @@ git stash list
 git stash apply <n>
 
 # remove top of the stash and apply it
-# you may use git restore . to resote back to the last commit state
+# you may use git 'restore .' to resote back to the last commit state
 git stash pop
 ```
 
+### b) Git Clean ?
+- Cleans the working tree by recursively removing files that are not under version control (remove untracked files/dirs), starting from the current directory.
+```
+# Just show what would be done
+git clean -n #--dry-run
+git clean -dn # directories
 
+# directories
+git clean -d 
+
+# directories & files
+git clean -df
+
+# remove files
+git clean -f # --force
+```
 
 # GITHUB
+## 1) Set up remote (github.com/new)
+- Repository name (unique withing one github account).
+
+## 2) Pushing
+- Setting remote connection with `git remote`.
+```
+# common name is origin
+# you could push more than one remote (for backup)
+git remote add <name> <URL>
+
+# remove remote
+git remote remove <name>
+
+# rename remote
+git rename <old name> <new name>
+
+# list all the remotes
+git remote
+
+# list all the remotes with additional info (verbose)
+git remote -v
+```
+- Moving files from local to Github repo with `git push`.
+- Local branch has to be connected to that remote version of the branch
+```
+git push <remote> <branch>
+
+# e.g: must add the '-u' option the first time pushing
+git push -u origin main
+
+# e.g: '-u' means '--set-upstream-to' 
+git push --set-upstream-to origin main
+
+# Push all local branches to Github
+git push --all
+
+git branch --set-upstream-to <origin/remote-branch>
+
+```
+
+- Fetch/Pull

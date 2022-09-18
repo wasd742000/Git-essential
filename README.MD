@@ -156,6 +156,9 @@ git rebase -i --root
 ```
 git branch
 # * main
+
+# show all branchs, including remote branchs
+git branch -a 
 ```
 - Make a new branch with the copy of an existing branch (new branch will have same history of original branch), or switch to a different existing branch
 ```
@@ -255,7 +258,7 @@ git remote -v
 ```
 - Moving files from local to Github repo with `git push`.
 - Local branch has to be connected to that remote version of the branch
-```
+``` 
 git push <remote> <branch>
 
 # e.g: must add the '-u' option the first time pushing
@@ -270,5 +273,40 @@ git push --all
 git branch --set-upstream-to <origin/remote-branch>
 
 ```
+## 3) Github options ?
+- Edit files.
+- Add files/directories.
+- Edit repository details.
 
-- Fetch/Pull
+## 4) Pull requests ?
+- Ask for change in the main site.
+- Pull requestion when make changes from main branch to a new branch
+
+## 5) Organizing Github
+
+## 6) Syncing Github
+- `git clone` helps taking the copy of github repository and place it on local hard drive.
+```
+# disk will clone remote repo to current wd
+git clone <remote rerpo URL>
+```
+
+- `git fetch` downloads info of remote repo to local repo (update local repo info since you make changes on Github)
+```
+# update all the changes made on Github
+git fetch
+```
+
+- `git pull` does both fetch and merging data of remote repo to local repo.
+```
+# before that you must
+# set up a up-stream-link from local main branch to remote branch
+git branch --set-upstream-to=origin/<branch> main
+
+# for e.g: set up -u link from local main to remote main (origin)
+git branch --set-upstream-to=origin/main main
+
+# sync info and data (remote -> local)
+git pull
+```
+

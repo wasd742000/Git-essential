@@ -126,7 +126,7 @@ git commit -amend
 git commit -am '<new commit message>'
 
 # or leave the message the same like the last commit
-git commit -amend --no-edit
+git commit --amend --no-edit
 ```
 - Use `git reset` to go back to previous commit (to the commit ID). But the files of the current commit remain unchanged (`git status` shows modified).
 ```
